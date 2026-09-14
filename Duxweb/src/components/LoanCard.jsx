@@ -33,7 +33,7 @@ export default function LoanCard({ loan, index = 0 }) {
           )}
         </div>
 
-        <h3 className="mt-5 text-xl font-display font-bold">{loan.name}</h3>
+        <h3 className="mt-5 text-xl font-display font-bold text-white">{loan.name}</h3>
         <p className="mt-2 text-sm text-white/70 leading-relaxed">{loan.description}</p>
 
         <dl className="mt-5 space-y-2 border-t border-white/10 pt-4">
