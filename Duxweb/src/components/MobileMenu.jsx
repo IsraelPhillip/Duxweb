@@ -30,7 +30,7 @@ export default function MobileMenu({ open, onClose }) {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
-          className="fixed inset-0 z-[100] bg-neutral-50 lg:hidden overflow-y-auto overscroll-contain"
+          className="fixed inset-0 z-[9999] isolate h-[100dvh] min-h-screen w-screen bg-neutral-50 lg:hidden overflow-y-auto overscroll-contain"
         >
           <div className="container-dux flex h-20 items-center justify-between">
             <img src={logo} alt={site.fullName} className="h-9 w-auto rounded-lg" />
