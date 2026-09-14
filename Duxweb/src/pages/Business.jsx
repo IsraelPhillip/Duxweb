@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import AccountCard from "../components/AccountCard";
+import LoanCard from "../components/LoanCard";
 import CTASection from "../components/CTASection";
 import ImagePlaceholder from "../components/ImagePlaceholder";
 import { accounts } from "../data/accounts";
+import { posProduct } from "../data/businessProducts";
 import { site } from "../data/site";
 
 export default function Business() {
@@ -42,14 +44,14 @@ export default function Business() {
           ))}
         </div>
 
-        {/* TODO: SME Banking, POS, and Business Support were part of the
-            original site structure but no verified product details have
-            been provided yet for these — add them here once confirmed. */}
-        <div className="mt-10 rounded-xl2 border border-dashed border-dux-ink/20 bg-neutral-50 p-6 max-w-3xl">
-          <p className="text-sm text-dux-slate">
-            Looking for POS, SME banking, or other business support? Get in
-            touch and our team will walk you through what's available.
+        <div className="mt-10 max-w-3xl">
+          <h2 className="text-2xl font-display font-medium">POS solutions</h2>
+          <p className="mt-2 text-dux-slate max-w-lg">
+            Give customers more ways to pay and keep your business moving.
           </p>
+          <div className="mt-6 max-w-xl">
+            <LoanCard loan={posProduct} />
+          </div>
         </div>
       </div>
 

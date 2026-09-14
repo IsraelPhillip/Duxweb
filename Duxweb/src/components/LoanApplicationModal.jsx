@@ -40,8 +40,11 @@ export default function LoanApplicationModal({ loan, open, onClose }) {
     setStatus("submitting");
 
     const formData = new FormData(e.target);
-    formData.append("_subject", `New ${loan.name} application`);
-    formData.append("loan", loan.name);
+    formData.append(
+      "_subject",
+      `New ${loan.applicationType || "Loan"} application`
+    );
+    formData.append("product", loan.name);
     if (officerName) formData.append("accountOfficer", officerName);
     Object.entries(files).forEach(([requirement, file]) => {
       if (file) formData.append(requirement, file);
@@ -125,7 +128,7 @@ export default function LoanApplicationModal({ loan, open, onClose }) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 space-y-6">
-                  <input type="hidden" name="loan" value={loan.name} />
+                  <input type="hidden" name="product" value={loan.name} />
                   <input type="text" name="_honey" className="hidden" tabIndex="-1" autoComplete="off" />
 
                   <div className="grid sm:grid-cols-2 gap-4">
