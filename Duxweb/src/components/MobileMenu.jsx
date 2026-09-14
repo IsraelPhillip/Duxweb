@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { navigation } from "../data/navigation";
@@ -7,7 +8,13 @@ import Button from "./Button";
 import logo from "../assets/images/logo.png";
 
 export default function MobileMenu({ open, onClose }) {
+  const firstLinkRef = useRef(null);
+
   useLockBodyScroll(open);
+
+  useEffect(() => {
+    if (open) firstLinkRef.current?.focus();
+  }, [open]);
 
   return (
     <AnimatePresence>
@@ -20,7 +27,10 @@ export default function MobileMenu({ open, onClose }) {
           // fixed + its own scroll container, independent of the page
           // behind it — this, plus the body scroll lock, stops the mobile
           // menu from fighting with page scroll underneath it.
-          className="fixed inset-0 z-[60] bg-neutral-50 lg:hidden overflow-y-auto overscroll-contain"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          className="fixed inset-0 z-[100] bg-neutral-50 lg:hidden overflow-y-auto overscroll-contain"
         >
           <div className="container-dux flex h-20 items-center justify-between">
             <img src={logo} alt={site.fullName} className="h-9 w-auto rounded-lg" />
@@ -37,9 +47,10 @@ export default function MobileMenu({ open, onClose }) {
             }}
             className="container-dux flex flex-col gap-1 pb-10"
           >
-            {navigation.map((item) => (
+            {navigation.map((item, index) => (
               <div key={item.label} className="py-4 border-b border-dux-ink/10">
                 <motion.a
+                  ref={index === 0 ? firstLinkRef : undefined}
                   variants={{
                     closed: { opacity: 0, y: 8 },
                     open: { opacity: 1, y: 0 },
