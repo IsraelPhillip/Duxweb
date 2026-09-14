@@ -43,7 +43,10 @@ export default function DetailModal({ open, onClose, title, tagline, dark = fals
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h3 id="detail-modal-title" className="text-xl font-display font-medium">
+                <h3
+                  id="detail-modal-title"
+                  className={`text-xl font-display font-medium ${dark ? "text-white" : "text-dux-ink"}`}
+                >
                   {title}
                 </h3>
                 {tagline && (
