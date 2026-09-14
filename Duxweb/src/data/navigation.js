@@ -24,7 +24,10 @@ export const navigation = [
   {
     label: "Business",
     href: "/business",
-    menu: [{ label: "Dux Corporate Account", href: "/business#corporate" }],
+    menu: [
+      { label: "Dux Corporate Account", href: "/business#corporate" },
+      { label: "DUX POS", href: "/business#pos" },
+    ],
   },
   {
     label: "Loans",
